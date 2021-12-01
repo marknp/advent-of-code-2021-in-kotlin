@@ -18,12 +18,12 @@ fun main() {
 
     val input = readInput("Day01")
     val part1 = part1(input)
-    println("Part 1: " + part1)
+    println("Part 1: $part1")
     check(part1(input) == 1766)
 
     val part2test = part2(testInput)
     check(part2test == 5)
     val part2 = part2(input)
-    println("Part 2: " + part2)
+    println("Part 2: $part2")
     check(part2(input) == 1797)
 }
