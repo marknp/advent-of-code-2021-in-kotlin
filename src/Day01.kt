@@ -3,13 +3,8 @@ import java.util.stream.IntStream
 fun main() {
     fun part1(input: List<String>): Int {
         val inputAsNumbers = input.map { string -> Integer.valueOf(string) }
-        var result = 0
-        for (i in IntStream.rangeClosed(1, input.size - 1)) {
-            if (inputAsNumbers[i] > inputAsNumbers[i - 1]) {
-                result++
-            }
-        }
-        return result
+        return inputAsNumbers.zipWithNext().count { (a, b) -> b > a }
+
     }
 
     fun threeMeasurementSum(i: Int, numbers: List<Int>): Int {
