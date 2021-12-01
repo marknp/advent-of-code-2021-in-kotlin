@@ -4,7 +4,9 @@ Welcome to the Advent of Code[^aoc] Kotlin project created by [marknp][github] u
 
 In this repository, Marion is about to provide solutions for the puzzles using [Kotlin][kotlin] language.
 
-Disclaimer: this is my very first excercises in kotlin, I try to go towards idiomatic kotlin, but mainly I try to get familiar with the language, so I am ware that things are not perfect at all
+Disclaimer: these are my very first exercises in kotlin, I try to go towards idiomatic kotlin, but mainly I try to get familiar with the language, so I am ware that things are not perfect at all. I'm happy for feedback and discussions!
+
+---
 
 If you are stuck with Kotlin-specific questions or anything related to this template, check out the following resources:
 
