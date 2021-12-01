@@ -1,12 +1,12 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        val inputAsNumbers = input.map { string -> Integer.valueOf(string) }
+        val inputAsNumbers = input.map { it.toInt() }
         return inputAsNumbers.zipWithNext().count { (a, b) -> b > a }
 
     }
 
     fun part2(input: List<String>): Int {
-        val inputAsNumbers = input.map { string -> Integer.valueOf(string) }
+        val inputAsNumbers = input.map { it.toInt() }
         val slidingAverage = inputAsNumbers.windowed(3).map { it.sum() }
         return slidingAverage.zipWithNext().count { (a, b) -> b > a }
     }
