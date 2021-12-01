@@ -1,5 +1,3 @@
-import java.util.stream.IntStream
-
 fun main() {
     fun part1(input: List<String>): Int {
         val inputAsNumbers = input.map { string -> Integer.valueOf(string) }
@@ -7,19 +5,10 @@ fun main() {
 
     }
 
-    fun threeMeasurementSum(i: Int, numbers: List<Int>): Int {
-        return numbers[i - 1] + numbers[i] + numbers[i + 1]
-    }
-
     fun part2(input: List<String>): Int {
         val inputAsNumbers = input.map { string -> Integer.valueOf(string) }
-        var result = 0
-        for (i in IntStream.rangeClosed(2, input.size - 2)) {
-            if (threeMeasurementSum(i, inputAsNumbers) > threeMeasurementSum(i - 1, inputAsNumbers)) {
-                result++
-            }
-        }
-        return result
+        val slidingAverage = inputAsNumbers.windowed(3).map { it.sum() }
+        return slidingAverage.zipWithNext().count { (a, b) -> b > a }
     }
 
 
@@ -32,7 +21,8 @@ fun main() {
     println("Part 1: " + part1)
     check(part1(input) == 1766)
 
-    check(part2(testInput) == 5)
+    val part2test = part2(testInput)
+    check(part2test == 5)
     val part2 = part2(input)
     println("Part 2: " + part2)
     check(part2(input) == 1797)
