@@ -13,6 +13,8 @@ fun readInput(name: String) = File("src/main/resources", "$name.txt").readLines(
  */
 fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
 
+fun booleanToInt(it: Boolean) = it.compareTo(false)
+
 
 fun check(
     day: Int,
