@@ -69,6 +69,7 @@ private fun scrub(input: List<String>): Int {
 fun main() {
     runaoc(
         DAY,
+        2021,
         PART_ONE_TEST_RESULT,
         PART_ONE_ACTUAL_RESULT,
         PART_TWO_TEST_RESULT,

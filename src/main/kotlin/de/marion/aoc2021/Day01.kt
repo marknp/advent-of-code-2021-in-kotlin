@@ -17,10 +17,10 @@ fun main() {
 
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
+    val testInput = readInput("Day01_test", "aoc2021")
     check(part1(testInput) == 7)
 
-    val input = readInput("Day01")
+    val input = readInput("Day01", "aoc2021")
     val part1 = part1(input)
     println("Part 1: $part1")
     check(part1(input) == 1766)
