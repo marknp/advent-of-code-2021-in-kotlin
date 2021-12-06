@@ -18,7 +18,7 @@ private fun part1(input: List<String>): Int {
     return lines.flatten().groupingBy { it }.eachCount().filter { it.value > 1 }.count()
 }
 
-class Line(val spoint: Point, val epoint: Point) {
+private class Line(val spoint: Point, val epoint: Point) {
     fun getAllPointsGrid1(): List<Point> {
         if (spoint.x == epoint.x) {
             return (range(spoint.y, epoint.y)).map { Point(spoint.x, it) }
@@ -53,7 +53,7 @@ class Line(val spoint: Point, val epoint: Point) {
 
 }
 
-data class Point(val x: Int, val y: Int) {}
+private data class Point(val x: Int, val y: Int) {}
 
 private fun part2(input: List<String>): Int {
     val lines = input.map { ("""(\d*),(\d*) -> (\d*),(\d*)""").toRegex().matchEntire(it) }

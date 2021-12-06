@@ -16,12 +16,12 @@ fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest
 fun runaoc(
     day: Int,
     year: Int,
-    part1TestResult: Int,
-    part1ActualResult: Int,
-    partTwoTestResult: Int,
-    partTwoActualResult: Int,
-    part1: (List<String>) -> Int,
-    part2: (List<String>) -> Int,
+    part1TestResult: Number,
+    part1ActualResult: Number,
+    partTwoTestResult: Number,
+    partTwoActualResult: Number,
+    part1: (List<String>) -> Number,
+    part2: (List<String>) -> Number,
 ) {
     val d = String.format("%02d", day)
     val inputTest = readInput("Day${d}_test", "aoc$year")
@@ -35,9 +35,12 @@ fun runaoc(
     println("Part 1: $part1Result")
     check(part1Result == part1ActualResult)
 
-    val part2TestResult = part2(inputTest)
-    println("Part 2 test: $part2TestResult")
-    check(part2TestResult == partTwoTestResult)
+
+    if (partTwoTestResult != -999) {
+        val part2TestResult = part2(inputTest)
+        println("Part 2 test: $part2TestResult")
+        check(part2TestResult == partTwoTestResult)
+    }
 
     val part2Result = part2(input)
     println("Part 2: $part2Result")
