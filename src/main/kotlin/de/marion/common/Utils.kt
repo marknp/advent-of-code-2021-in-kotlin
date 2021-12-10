@@ -29,11 +29,11 @@ fun runaoc(
 
     val part11 = part1(inputTest)
     println("Part 1 test: $part11")
-    check(part11 == part1TestResult)
+    check(part11.equals(part1TestResult))
 
     val part1Result = part1(input)
     println("Part 1: $part1Result")
-    check(part1Result == part1ActualResult)
+    check(part1Result.equals(part1ActualResult))
 
 
     if (partTwoTestResult != -999) {

@@ -17,3 +17,8 @@ tasks {
         gradleVersion = "7.3"
     }
 }
+
+
+dependencies {
+    implementation("org.apache.commons:commons-text:1.9")
+}
