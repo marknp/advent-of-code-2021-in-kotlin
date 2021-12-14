@@ -8,7 +8,7 @@ private const val PART_ONE_TEST_RESULT: Long = 1588
 private const val PART_TWO_TEST_RESULT: Long = 2188189693529
 
 private const val PART_ONE_ACTUAL_RESULT: Long = 3411
-private const val PART_TWO_ACTUAL_RESULT: Long = 476
+private const val PART_TWO_ACTUAL_RESULT: Long = 7477815755570
 
 private fun part1(input: List<String>): Number {
     return solve(input, 10)

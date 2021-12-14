@@ -5,8 +5,11 @@ import java.security.MessageDigest
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String, folder: String) = File("src/main/resources/de/marion/$folder", "$name.txt").readLines()
+fun readInputLines(name: String, folder: String) = File("src/main/resources/de/marion/$folder", "$name.txt").readLines()
 
+
+fun readInputText(name: String, folder: String) =
+    listOf(File("src/main/resources/de/marion/$folder", "$name.txt").readText())
 
 /**
  * Converts string to md5 hash.
@@ -22,10 +25,11 @@ fun runaoc(
     partTwoActualResult: Number,
     part1: (List<String>) -> Number,
     part2: (List<String>) -> Number,
+    read: (String, String) -> List<String> = { a, b -> readInputLines(a, b) }
 ) {
     val d = String.format("%02d", day)
-    val inputTest = readInput("Day${d}_test", "aoc$year")
-    val input = readInput("Day$d", "aoc$year")
+    val inputTest = read("Day${d}_test", "aoc$year")
+    val input = read("Day$d", "aoc$year")
 
     val part11 = part1(inputTest)
     println("Part 1 test: $part11")
