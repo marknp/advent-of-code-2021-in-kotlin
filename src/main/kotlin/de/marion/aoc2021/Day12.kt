@@ -7,60 +7,62 @@ private const val PART_ONE_TEST_RESULT: Int = 19
 private const val PART_TWO_TEST_RESULT: Int = 103
 
 private const val PART_ONE_ACTUAL_RESULT: Int = 5076
-private const val PART_TWO_ACTUAL_RESULT: Int = 476
+private const val PART_TWO_ACTUAL_RESULT: Int = 145643
 
 private fun part1(input: List<String>): Number {
     val net = input.map { it.split("-") }.map { it[0] to it[1] }
     val caves = Caves(net)
 
-    return caves.getNumberOfTraverses("start", "end", emptyList(), false)
+    return caves.getNumberOfWays("start", "end", emptyList(), false)
 
 }
 
 class Caves(net: List<Pair<String, String>>) {
 
     private var map: Map<String, Set<String>>
-    var ways: MutableList<List<String>>
+    private var ways: MutableList<List<String>> = mutableListOf()
 
     init {
-        this.ways = mutableListOf()
         this.map = (net + net.map { it.second to it.first })
             .groupBy { it.first }
             .map { it.key to it.value.map { i -> i.second }.toSet() }
             .toMap()
     }
 
-    fun getNumberOfTraverses(from: String, to: String, visited: List<String>, part2: Boolean): Int {
+    fun getNumberOfWays(from: String, to: String, visitedBefore: List<String>, part2: Boolean): Int {
+        val visitedComplete = visitedBefore + from
         if (from == to) {
-            ways.add(visited + to)
+            ways.add(visitedComplete)
             return 1
         }
 
-        val edges = map.get(from)
-        val numWays =
-            edges!!.map {
-                if (isUpper(it) || canVisitAgain(visited, it, part2))
-                    getNumberOfTraverses(it, to, visited + from, part2)
-                else 0
-            }
+        val numWays = map[from]!!.map {
+            if (isUpper(it) || canVisitAgain(visitedComplete, it, part2))
+                getNumberOfWays(it, to, visitedComplete, part2)
+            else 0 // Sackgasse
+        }
         return numWays.sumOf { it }
     }
 
     private fun canVisitAgain(visited: List<String>, it: String, part2: Boolean): Boolean {
         return if (!part2) {
-            (!visited.contains(it))
+            !visited.contains(it)
         } else {
-            (it != "start" && (!hasDoubleSmallCave(visited)) || !visited.contains(it))
+            it != "start" && !hasDoubleSmallCave(visited) || !visited.contains(it)
         }
     }
 
     private fun hasDoubleSmallCave(visited: List<String>): Boolean {
-        val smallcaves = visited.filter { it != it.uppercase() }
-        return smallcaves.toSet().size != smallcaves.size
+        //"start","kj","HN","dc","HN","kj","dc","end" -> {ArrayList@1081}  size = 1
+        val smallCaves = visited.filter { it != it.uppercase() }
+        return smallCaves.toSet().size != smallCaves.size
     }
 
 
-    fun isUpper(it: String) = it.uppercase() == it
+    private fun isUpper(it: String) = it.uppercase() == it
+    fun getWays(): List<List<String>> {
+        return ways.toList()
+    }
 
 }
 
@@ -68,8 +70,7 @@ class Caves(net: List<Pair<String, String>>) {
 private fun part2(input: List<String>): Number {
     val net = input.map { it.split("-") }.map { it[0] to it[1] }
     val caves = Caves(net)
-
-    return caves.getNumberOfTraverses("start", "end", emptyList(), true)
+    return caves.getNumberOfWays("start", "end", emptyList(), true)
 }
 
 fun main() {
