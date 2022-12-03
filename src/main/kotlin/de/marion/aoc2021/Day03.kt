@@ -1,3 +1,5 @@
+import de.marion.common.runaoc
+
 private const val DAY = 3
 private const val PART_ONE_TEST_RESULT = 198
 private const val PART_TWO_TEST_RESULT = 230

@@ -1,6 +1,6 @@
 package de.marion.aoc2015
 
-import md5
+import de.marion.common.md5
 
 fun main() {
     //val secret = "bgvyzdsv"

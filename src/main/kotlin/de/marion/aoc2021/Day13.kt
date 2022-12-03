@@ -1,7 +1,7 @@
 package de.marion.aoc2021
 
-import readInputText
-import runaoc
+import de.marion.common.readInputText
+import de.marion.common.runaoc
 
 private const val DAY = 13
 private const val PART_ONE_TEST_RESULT: Int = 17

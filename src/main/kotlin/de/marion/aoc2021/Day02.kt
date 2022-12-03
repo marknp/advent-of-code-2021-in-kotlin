@@ -1,3 +1,5 @@
+import de.marion.common.runaoc
+
 data class Position(val x: Int, val y: Int)
 data class SubmarineState(val position: Position, val aim: Int)
 

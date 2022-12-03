@@ -1,6 +1,7 @@
 package de.marion.aoc2021
 
-import runaoc
+import de.marion.common.Point
+import de.marion.common.runaoc
 
 private const val DAY = 5
 private const val PART_ONE_TEST_RESULT = 5
@@ -52,8 +53,6 @@ private class Line(val spoint: Point, val epoint: Point) {
     private fun range(i: Int, y: Int) = (listOf(i, y)).minOf { it }..(listOf(i, y)).maxOf { it }
 
 }
-
-private data class Point(val x: Int, val y: Int) {}
 
 private fun part2(input: List<String>): Int {
     val lines = input.map { ("""(\d*),(\d*) -> (\d*),(\d*)""").toRegex().matchEntire(it) }

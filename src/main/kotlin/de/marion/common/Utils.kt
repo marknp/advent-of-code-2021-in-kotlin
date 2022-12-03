@@ -1,3 +1,5 @@
+package de.marion.common
+
 import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
@@ -5,7 +7,8 @@ import java.security.MessageDigest
 /**
  * Reads lines from the given input txt file.
  */
-fun readInputLines(name: String, folder: String) = File("src/main/resources/de/marion/$folder", "$name.txt").readLines()
+fun readInputLines(name: String, folder: String) = File("src/main/resources/de/marion/$folder", "$name.txt")
+    .readLines()
 
 
 fun readInputText(name: String, folder: String) =
@@ -50,3 +53,24 @@ fun runaoc(
     println("Part 2: $part2Result")
     check(part2Result == partTwoActualResult)
 }
+
+
+data class Point(val x: Int, val y: Int) {
+    fun getNeighbours(size: Int): List<Point> {
+        return setOf(
+            Point(x - 1, y),
+            Point(x + 1, y),
+            Point(x, y - 1),
+            Point(x, y + 1),
+            Point(x - 1, y + 1),
+            Point(x + 1, y - 1),
+            Point(x - 1, y - 1),
+            Point(x + 1, y + 1)
+        )
+            .filter { it.x >= 0 }
+            .filter { it.y >= 0 }
+            .filter { it.x < size }
+            .filter { it.y < size }
+    }
+}
+

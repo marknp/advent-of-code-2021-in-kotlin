@@ -1,6 +1,6 @@
 package de.marion.aoc2021
 
-import readInputLines
+import de.marion.common.readInputLines
 
 fun main() {
     fun part1(input: List<String>): Int {

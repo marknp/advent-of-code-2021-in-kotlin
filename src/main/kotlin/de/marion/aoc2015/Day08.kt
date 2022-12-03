@@ -1,6 +1,6 @@
 package de.marion.aoc2015
 
-import runaoc
+import de.marion.common.runaoc
 
 private const val DAY = 8
 private const val PART_ONE_TEST_RESULT = 15

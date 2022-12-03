@@ -1,6 +1,6 @@
 package de.marion.aoc2021
 
-import runaoc
+import de.marion.common.runaoc
 import kotlin.math.roundToLong
 
 private const val DAY = 14
